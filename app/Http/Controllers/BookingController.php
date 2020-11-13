@@ -92,11 +92,20 @@ class BookingController extends Controller {
      */
     public function update( Request $request, Booking $booking ) {
 
-        $booking->fill( $request->input() );
+        $validatedData = $request->validate( [
+            'start'          => 'required|date', // make sure it's a date
+            'end'            => 'required|date',
+            'room_id'        => 'required|exists:rooms,id', // make sure that the room id exists in the room table
+            'user_id'        => 'required|exists:users,id', // make sure that the user id exists in the user table
+            'is_paid'        => 'nullable',
+            'notes'          => 'present',
+            'is_reservation' => 'required',
+        ] );
+        $booking->fill( $validatedData );
         $booking->save();
 
         /* Update also the user link for the booking */
-        $booking->users()->sync( [ $request->input( 'user_id' ) ] );
+        $booking->users()->sync( [ $validatedData['user_id'] ] );
 
         return redirect()->route( 'bookings.index' );
     }

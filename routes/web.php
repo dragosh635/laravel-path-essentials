@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\RoomTypeController;
+use App\Http\Controllers\ShowRoomsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +23,8 @@ Route::get( '/', function () {
 Auth::routes();
 
 Route::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'home' );
-Route::get( '/rooms/{roomType?}', \App\Http\Controllers\ShowRoomsController::class );
+Route::get( '/rooms/{roomType?}', ShowRoomsController::class );
 
-Route::resource('bookings', \App\Http\Controllers\BookingController::class );
+Route::resource('bookings', BookingController::class );
+Route::resource('room_types', RoomTypeController::class );
 

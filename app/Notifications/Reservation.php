@@ -10,12 +10,13 @@ use App\Mail\Reservations;
 
 class Reservation extends Notification
 {
+    /* We can add this to queue*/
     use Queueable;
 
     /**
-     * Create a new notification instance.
+     * Reservation constructor.
      *
-     * @return void
+     * @param string $name
      */
     public function __construct( string $name )
     {
@@ -36,8 +37,9 @@ class Reservation extends Notification
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @param $notifiable
+     *
+     * @return Reservations
      */
     public function toMail($notifiable)
     {

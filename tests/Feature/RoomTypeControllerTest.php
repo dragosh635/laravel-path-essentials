@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Cache;
 class RoomTypeControllerTest extends TestCase {
     /**
      * A basic feature test example.
+     * Test view room types action along the cache part
      *
      * @return void
      */

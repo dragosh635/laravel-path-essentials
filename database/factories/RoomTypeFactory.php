@@ -15,7 +15,7 @@ class RoomTypeFactory extends Factory
     protected $model = RoomType::class;
 
     /**
-     * Define the model's default state.
+     * Define what a room type factory should create
      *
      * @return array
      */

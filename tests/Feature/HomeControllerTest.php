@@ -12,6 +12,7 @@ class HomeControllerTest extends TestCase {
 
     /**
      * A basic feature test example.
+     * Test login user action
      *
      * @return void
      */

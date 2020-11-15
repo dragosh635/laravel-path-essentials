@@ -11,16 +11,17 @@ class Reservations extends Mailable {
     use Queueable, SerializesModels;
 
     /**
+     * Reservations constructor.
      * Create a new message instance.
      *
-     * @return void
+     * @param string $name
      */
     public function __construct( string $name = '' ) {
         $this->name = $name;
     }
 
     /**
-     * Build the message.
+     * Build the message / mail.
      *
      * @return $this
      */

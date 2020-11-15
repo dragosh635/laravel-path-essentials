@@ -15,6 +15,7 @@ class ShowRoomsControllerTest extends TestCase {
 
     /**
      * A basic feature test example.
+     * Test show rooms page
      *
      * @return void
      */
@@ -27,6 +28,9 @@ class ShowRoomsControllerTest extends TestCase {
                  ->assertViewHas( 'rooms' );
     }
 
+    /**
+     * Test view rooms page and the rooms types in it
+     */
     public function testRoomParameter() {
         $roomTypes = RoomType::factory()->count( 5 )->create();
         $rooms     = Room::factory()->count( 20 )->create();
@@ -42,6 +46,9 @@ class ShowRoomsControllerTest extends TestCase {
 
     }
 
+    /**
+     * Test if the upload file was successfully for a room type
+     */
     public function testUpdateFile() {
         // fake a file to upload
         $file     = UploadedFile::fake()->image( 'sample.jpg' );

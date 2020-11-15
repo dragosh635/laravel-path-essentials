@@ -15,8 +15,9 @@ class ProcessBookingJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
-     * Create a new job instance.
+     * ProcessBookingJob constructor.
      *
+     * @param Booking $booking
      * @return void
      */
     public function __construct( Booking $booking )

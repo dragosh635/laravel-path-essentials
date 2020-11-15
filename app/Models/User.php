@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * Class User
+ * We are implementing MustVerifyEmail => we want the user to verify his email after he registers on the website
+ */
 class User extends Authenticatable implements MustVerifyEmail {
     use HasFactory, Notifiable;
 

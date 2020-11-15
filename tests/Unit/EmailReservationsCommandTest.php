@@ -9,6 +9,7 @@ use PHPUnit\Framework\TestCase;
 class EmailReservationsCommandTest extends TestCase {
     /**
      * A basic unit test example.
+     * Test the email reservation command
      *
      * @return void
      */

@@ -11,8 +11,10 @@ class Booking extends Model {
 
     use HasFactory;
 
+    /* Give the ability to use soft deletes */
     use SoftDeletes;
 
+    /* Give the ability to send a notification when a booking is created */
     use Notifiable;
 
     /**

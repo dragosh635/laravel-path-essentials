@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller {
 
+    /**
+     * BookingController constructor.
+     * Only authenticated user are allow to visit the routes from this controoler
+     */
     public function __construct() {
         $this->middleware( 'auth' );
     }
@@ -98,6 +102,7 @@ class BookingController extends Controller {
      */
     public function update( Request $request, Booking $booking ) {
 
+        /* Just a quick example of how a job should work */
         ProcessBookingJob::dispatch( $booking );
 
         $validatedData = $request->validate( [

@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class CheckQueryParam {
     /**
-     * Handle an incoming request.
+     * Quick example about how to create a custom middleware
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure $next
+     * @param Request $request
+     * @param Closure $next
      *
      * @return mixed
      */

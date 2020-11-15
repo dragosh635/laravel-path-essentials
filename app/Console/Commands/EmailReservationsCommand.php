@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Models\Booking;
 use Illuminate\Console\Command;
-use App\Libraries\NotificationsInterface;
 use App\Libraries\Notifications;
 use App\Notifications\Reservation;
 
@@ -24,9 +23,9 @@ class EmailReservationsCommand extends Command {
     protected $description = 'Notify Reservations holders';
 
     /**
-     * Create a new command instance.
+     * EmailReservationsCommand constructor.
      *
-     * @return void
+     * @param Notifications $notify
      */
     public function __construct( Notifications $notify ) {
         $this->notify = $notify;
@@ -49,7 +48,7 @@ class EmailReservationsCommand extends Command {
             return 1;
         }
         $bookings = Booking::with( [ 'room.roomType', 'users' ] )->limit( $count )->get();
-        $this->info( sprintf( 'The number of bookigns to alert for is: %d', $bookings->count() ) );
+        $this->info( sprintf( 'The number of bookings to alert for is: %d', $bookings->count() ) );
 
         $bar = $this->output->createProgressBar( $bookings->count() );
         $bar->start();
@@ -61,6 +60,11 @@ class EmailReservationsCommand extends Command {
         $this->comment( 'Command completed' );
     }
 
+    /**
+     * Process a single booking during the execution of the command
+     *
+     * @param Booking $booking
+     */
     public function processBooking( $booking ) {
         if ( $this->option( 'dry-run' ) ) {
             $this->info( 'Would process booking' );

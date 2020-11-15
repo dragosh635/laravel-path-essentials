@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RoomType;
 use Illuminate\Http\Request;
 use App\Models\Room;
 
@@ -14,8 +15,8 @@ class ShowRoomsController extends Controller {
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function __invoke( Request $request, $roomType = null ) {
-        $rooms = Room::byType( $roomType )->get();
+    public function __invoke( Request $request, RoomType $roomType = null ) {
+        $rooms = Room::byType( $roomType->id )->get();
 
         return view( 'rooms.index', [
             'rooms' => $rooms,

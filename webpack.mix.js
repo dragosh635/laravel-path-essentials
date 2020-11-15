@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require( 'laravel-mix' );
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +11,17 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.js( 'resources/js/app.js', 'public/js' )
+   .sourceMaps()
+   .extract( ['vue'] )
+   .version()
+   .sass( 'resources/sass/app.scss', 'public/css' );
+
+//mix.browserSync( 'sync.test' );
+//mix.babel( ['first.js', 'second.js'], 'all.js' );
+//mix.react( 'app.jsx', 'public/js' );
+
+//mix.less( 'path.less', 'public/css/less.css' )
+//   .less( 'path2.less', 'public/css/less2.css' );
+//
+//mix.styles( ['first.css', 'second.css'], 'public/css/all.css' );
